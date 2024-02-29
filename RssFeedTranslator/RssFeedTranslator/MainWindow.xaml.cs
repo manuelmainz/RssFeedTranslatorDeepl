@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using RssFeedTranslator.Utils.DeepL;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,7 +21,7 @@ namespace RssFeedTranslator
         {
             InitializeComponent();
 
-            DataContext = new MainWindowViewModel();
+            DataContext = new MainWindowViewModel(new DeeplTranslator());
         }
     }
 }

@@ -5,6 +5,10 @@ VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssFeedTranslator", "RssFeedTranslator\RssFeedTranslator.csproj", "{04C01353-42CA-4105-B38C-BADB29C81BEF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssFeedTranslator.Utils", "RssFeedTranslator.Utils\RssFeedTranslator.Utils.csproj", "{55D54E8B-4315-43A1-A16E-8A08083CAB3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RssFeedTranslator.Utils.DeepL", "RssFeedTranslator.Utils.DeepL\RssFeedTranslator.Utils.DeepL.csproj", "{513BEB1F-C75F-43C4-86B3-59DDB9629581}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{04C01353-42CA-4105-B38C-BADB29C81BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04C01353-42CA-4105-B38C-BADB29C81BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04C01353-42CA-4105-B38C-BADB29C81BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55D54E8B-4315-43A1-A16E-8A08083CAB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D54E8B-4315-43A1-A16E-8A08083CAB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D54E8B-4315-43A1-A16E-8A08083CAB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D54E8B-4315-43A1-A16E-8A08083CAB3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{513BEB1F-C75F-43C4-86B3-59DDB9629581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{513BEB1F-C75F-43C4-86B3-59DDB9629581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{513BEB1F-C75F-43C4-86B3-59DDB9629581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{513BEB1F-C75F-43C4-86B3-59DDB9629581}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

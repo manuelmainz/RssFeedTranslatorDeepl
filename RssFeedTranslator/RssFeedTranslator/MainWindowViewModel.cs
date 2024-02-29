@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using RssFeedTranslator.Utils;
 using RssFeedTranslator.ViewModels;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,23 +15,41 @@ using System.Xml;
 
 namespace RssFeedTranslator
 {
-    class MainWindowViewModel //: ObservableObject
+    class MainWindowViewModel : ObservableObject
     {
         private ArticleViewModel? selectedArticle;
+        private string? translatedSummary;
+        private readonly ITranslator translator;
 
         public ICommand DoSomethingCommand { get; }
+        
+        public ICommand TranslateArticleCommand { get; }
 
         public ObservableCollection<ArticleViewModel> Articles { get; } = new ObservableCollection<ArticleViewModel>();
 
         public ArticleViewModel? SelectedArticle
         {
             get => selectedArticle;
-            set => selectedArticle = value; // SetProperty(ref selectedArticle, value);
+            set
+            {
+                if (SetProperty(ref selectedArticle, value))
+                {
+                    TranslatedSummary = null;
+                }
+            }
         }
 
-        public MainWindowViewModel()
+        public string? TranslatedSummary
         {
-             DoSomethingCommand = new RelayCommand(DoSomething);
+            get => translatedSummary;
+            set => SetProperty(ref translatedSummary, value);
+        }
+
+        public MainWindowViewModel(ITranslator translator)
+        {
+            this.translator = translator;
+            DoSomethingCommand = new RelayCommand(DoSomething);
+            TranslateArticleCommand = new RelayCommand(TranslateArticle);
         }
 
         public void DoSomething()
@@ -42,6 +62,23 @@ namespace RssFeedTranslator
             {
                 Articles.Add(new ArticleViewModel(item));
             }
+        }
+
+        public void TranslateArticle()
+        {
+            if (SelectedArticle is not ArticleViewModel article)
+            {
+                return;
+            }
+
+            if (translator is null)
+            {
+                throw new NotImplementedException("Translator is not available.");
+            }
+
+            string translatedText = translator.Translate(article.Summary);
+
+            TranslatedSummary = translatedText;
         }
     }
 }
