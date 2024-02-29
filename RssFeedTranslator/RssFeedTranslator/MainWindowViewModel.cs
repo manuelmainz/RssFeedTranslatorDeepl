@@ -64,7 +64,7 @@ namespace RssFeedTranslator
             }
         }
 
-        public void TranslateArticle()
+        public async void TranslateArticle()
         {
             if (SelectedArticle is not ArticleViewModel article)
             {
@@ -76,7 +76,7 @@ namespace RssFeedTranslator
                 throw new NotImplementedException("Translator is not available.");
             }
 
-            string translatedText = translator.Translate(article.Summary);
+            string translatedText = await translator.Translate(article.Summary);
 
             TranslatedSummary = translatedText;
         }

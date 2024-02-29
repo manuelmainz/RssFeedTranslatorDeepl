@@ -21,7 +21,8 @@ namespace RssFeedTranslator
         {
             InitializeComponent();
 
-            DataContext = new MainWindowViewModel(new DeeplTranslator());
+            string? deeplAuthKey = Environment.GetEnvironmentVariable("DEEPL_AUTH_KEY");
+            DataContext = new MainWindowViewModel(new DeeplTranslator(deeplAuthKey));
         }
     }
 }

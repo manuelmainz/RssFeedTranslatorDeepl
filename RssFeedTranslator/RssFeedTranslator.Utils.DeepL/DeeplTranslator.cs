@@ -1,8 +1,17 @@
-﻿namespace RssFeedTranslator.Utils.DeepL
+﻿using DeepL;
+
+namespace RssFeedTranslator.Utils.DeepL
 {
     public class DeeplTranslator : ITranslator
     {
-        public string Translate(string summary)
+        private readonly Translator translator;
+
+        public DeeplTranslator(string authKey)
+        {
+            translator = new Translator(authKey);
+        }
+        
+        public async Task<string> Translate(string summary)
         {
             if (string.IsNullOrWhiteSpace(summary))
             {
@@ -11,11 +20,13 @@
 
             summary = summary.Trim();
 
-            string translated = summary.Replace('a', 'ä')
-                .Replace('o', 'ö')
-                .Replace('u', 'ü');
+            // Translate text into a target language, in this case, French:
+            var translatedText = await translator.TranslateTextAsync(
+                  summary,
+                  null,
+                  LanguageCode.German);
 
-            return translated;
+            return translatedText.Text;
         }
     }
 }

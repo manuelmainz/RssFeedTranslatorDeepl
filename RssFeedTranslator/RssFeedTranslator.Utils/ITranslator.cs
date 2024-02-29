@@ -8,6 +8,6 @@ namespace RssFeedTranslator.Utils
 {
     public interface ITranslator
     {
-        string Translate(string summary);
+        Task<string> Translate(string summary);
     }
 }
