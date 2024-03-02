@@ -1,6 +1,7 @@
 ﻿using RssFeedTranslator.Utils;
 using RssFeedTranslator.Utils.DeepL;
 using RssFeedTranslator.Utils.Json;
+using System.Configuration;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,6 +25,12 @@ namespace RssFeedTranslator
             InitializeComponent();
 
             string? deeplAuthKey = Environment.GetEnvironmentVariable("DEEPL_AUTH_KEY");
+
+            if (deeplAuthKey is null)
+            {
+                throw new ConfigurationErrorsException("Please configure environment variable 'DEEPL_AUTH_KEY'.");
+            }
+
             var deeplTranslator = new DeeplTranslator(deeplAuthKey);
             var persister = new JsonPersister("filesote.json");
 
