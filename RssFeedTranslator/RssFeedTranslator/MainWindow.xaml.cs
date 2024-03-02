@@ -1,4 +1,6 @@
-﻿using RssFeedTranslator.Utils.DeepL;
+﻿using RssFeedTranslator.Utils;
+using RssFeedTranslator.Utils.DeepL;
+using RssFeedTranslator.Utils.Json;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,7 +24,12 @@ namespace RssFeedTranslator
             InitializeComponent();
 
             string? deeplAuthKey = Environment.GetEnvironmentVariable("DEEPL_AUTH_KEY");
-            DataContext = new MainWindowViewModel(new DeeplTranslator(deeplAuthKey));
+            var deeplTranslator = new DeeplTranslator(deeplAuthKey);
+            var persister = new JsonPersister("filesote.json");
+
+            var translator = new CacheTranslator(deeplTranslator, persister);
+
+            DataContext = new MainWindowViewModel(translator);
         }
     }
 }
