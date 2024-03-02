@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RssFeedTranslator"
         mc:Ignorable="d"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Title="MainWindow" Height="450" Width="800"
         d:DataContext="{d:DesignInstance local:MainWindowViewModel, IsDesignTimeCreatable=True}">
     <Grid>
@@ -18,8 +20,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
-            <Button Content="Do shit" Command="{Binding DoSomethingCommand}"/>
-            <Button Content="Translate" Command="{Binding TranslateArticleCommand}"/>
+            <Button Content="Do shit" Command="{Binding DoSomethingCommand}" Margin="5"/>
+            <Button Content="Translate" Command="{Binding TranslateArticleCommand}" Margin="5"/>
             <!-- Add additional buttons here... -->
         </StackPanel>
 
