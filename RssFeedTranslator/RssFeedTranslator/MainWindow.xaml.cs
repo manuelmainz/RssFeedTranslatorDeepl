@@ -33,7 +33,9 @@ namespace RssFeedTranslator
             }
 
             var deeplTranslator = new DeeplTranslator(deeplAuthKey);
-            var persister = new JsonPersister("filesote.json");
+            
+            string filePath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "RssFeedTranslator.json");
+            var persister = new JsonPersister(filePath);
 
             var translator = new CacheTranslator(deeplTranslator, persister);
 
