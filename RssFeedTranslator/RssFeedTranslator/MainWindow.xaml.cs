@@ -1,6 +1,7 @@
 ﻿using RssFeedTranslator.Utils;
 using RssFeedTranslator.Utils.DeepL;
 using RssFeedTranslator.Utils.Json;
+using RssFeedTranslator.ViewModels;
 using System.Configuration;
 using System.Text;
 using System.Windows;

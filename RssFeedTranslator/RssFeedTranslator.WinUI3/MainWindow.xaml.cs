@@ -5,6 +5,10 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using RssFeedTranslator.Utils;
+using RssFeedTranslator.Utils.DeepL;
+using RssFeedTranslator.Utils.Json;
+using RssFeedTranslator.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,11 +30,21 @@ namespace RssFeedTranslator.WinUI3
         public MainWindow()
         {
             this.InitializeComponent();
-        }
 
-        private void myButton_Click(object sender, RoutedEventArgs e)
-        {
-            myButton.Content = "Clicked";
+            string? deeplAuthKey = Environment.GetEnvironmentVariable("DEEPL_AUTH_KEY");
+
+            if (deeplAuthKey is null)
+            {
+                throw new System.ArgumentException("Please configure environment variable 'DEEPL_AUTH_KEY'.");
+            }
+
+            var deeplTranslator = new DeeplTranslator(deeplAuthKey);
+            var persister = new JsonPersister("filesote.json");
+
+            var translator = new CacheTranslator(deeplTranslator, persister);
+
+            var vm = new MainWindowViewModel(translator);
+            RootPanel.DataContext = vm;
         }
     }
 }

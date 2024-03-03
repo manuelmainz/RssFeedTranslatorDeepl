@@ -49,7 +49,21 @@ namespace RssFeedTranslator.Utils
         }
 
         public Dictionary<TKey, TValue> ToDictionary()
-            => valueDic.ToDictionary();
+        {
+            // in .NET8 you can just call => valueDic.ToDictionary();
+
+            var keys = valueDic.Keys.ToArray();
+            var dic = new Dictionary<TKey, TValue>(keys.Length);
+            foreach (var k in keys)
+            {
+                if (valueDic.TryGetValue(k, out TValue? v))
+                {
+                    dic.Add(k, v);
+                }
+            }
+
+            return dic;
+        }
 
         private async Task<TValue> CreateValue(TKey key, Func<TKey, Task<TValue>> func)
         {

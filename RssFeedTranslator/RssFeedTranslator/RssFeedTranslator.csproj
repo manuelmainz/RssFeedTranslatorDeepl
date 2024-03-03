@@ -17,6 +17,7 @@
     <ProjectReference Include="..\RssFeedTranslator.Utils.DeepL\RssFeedTranslator.Utils.DeepL.csproj" />
     <ProjectReference Include="..\RssFeedTranslator.Utils.Json\RssFeedTranslator.Utils.Json.csproj" />
     <ProjectReference Include="..\RssFeedTranslator.Utils\RssFeedTranslator.Utils.csproj" />
+    <ProjectReference Include="..\RssFeedTranslator.ViewModels\RssFeedTranslator.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
