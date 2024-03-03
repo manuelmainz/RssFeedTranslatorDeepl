@@ -8,23 +8,38 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid x:Name="RootPanel">
+    <Grid x:Name="RootPanel" Padding="5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    BorderThickness="0,0,0,1" BorderBrush="LightGray"
+                    Background="#FF2B2B2B">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Black"/>
+                    <Setter Property="Margin" Value="5,2,0,2"/>
+                </Style>
+            </StackPanel.Resources>
             <Button Content="Do shit" Command="{Binding DoSomethingCommand}"/>
             <Button Content="Translate" Command="{Binding TranslateArticleCommand}"/>
             <!-- Add additional buttons here... -->
         </StackPanel>
 
-        <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Articles}" SelectedItem="{Binding SelectedArticle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        <!--<Border Grid.Column="0" Grid.Row="1" BorderThickness="0,1,0,0" BorderBrush="LightGray" Margin="0,0,0,0"/>-->
+        
+        <ListBox Grid.Column="0" Grid.Row="2"
+                 ItemsSource="{Binding Articles}"
+                 SelectedItem="{Binding SelectedArticle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 BorderThickness="0,0,1,0" BorderBrush="LightGray">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Title}"/>
@@ -32,7 +47,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical" Padding="5">
             <TextBlock Text="{Binding SelectedArticle.Title}" FontWeight="Bold"/>
             <Grid>
                 <Grid.ColumnDefinitions>
