@@ -13,7 +13,7 @@
     <Grid x:Name="RootPanel" Padding="5">
         <Interactivity:Interaction.Behaviors>
             <Interactions:EventTriggerBehavior EventName="Loaded">
-                <Interactions:InvokeCommandAction Command="{Binding DoSomethingCommand}"/>
+                <Interactions:InvokeCommandAction Command="{Binding LoadArticlesCommand}"/>
             </Interactions:EventTriggerBehavior>
         </Interactivity:Interaction.Behaviors>
 
@@ -37,7 +37,7 @@
                     <Setter Property="Margin" Value="5,2,0,2"/>
                 </Style>
             </StackPanel.Resources>
-            <Button Content="Do shit" Command="{Binding DoSomethingCommand}"/>
+            <Button Content="Load" Command="{Binding LoadArticlesCommand}"/>
             <Button Content="Translate" Command="{Binding TranslateArticleCommand}"/>
             <!-- Add additional buttons here... -->
         </StackPanel>

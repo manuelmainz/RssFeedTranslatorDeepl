@@ -20,7 +20,7 @@ namespace RssFeedTranslator.ViewModels
         private string? translatedSummary;
         private readonly ITranslator translator;
 
-        public ICommand DoSomethingCommand { get; }
+        public ICommand LoadArticlesCommand { get; }
 
         public ICommand TranslateArticleCommand { get; }
 
@@ -52,11 +52,11 @@ namespace RssFeedTranslator.ViewModels
         public MainWindowViewModel(ITranslator translator)
         {
             this.translator = translator;
-            DoSomethingCommand = new RelayCommand(DoSomething);
+            LoadArticlesCommand = new RelayCommand(LoadArticles);
             TranslateArticleCommand = new RelayCommand(TranslateArticle);
         }
 
-        public void DoSomething()
+        public void LoadArticles()
         {
             string url = "https://www.ad.nl/binnenland/rss.xml";
             XmlReader reader = XmlReader.Create(url);

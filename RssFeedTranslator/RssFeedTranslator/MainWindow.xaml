@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
-            <Button Content="Do shit" Command="{Binding DoSomethingCommand}"/>
+            <Button Content="Load" Command="{Binding LoadArticlesCommand}"/>
             <Button Content="Translate" Command="{Binding TranslateArticleCommand}"/>
             <!-- Add additional buttons here... -->
         </StackPanel>
