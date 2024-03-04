@@ -5,4 +5,9 @@ This is a simple project which uses [System.ServiceModel.Syndication](https://ww
 
 This project contains a WPF Frontend (project "RssFeedTranslator") and a WinUI3 Frontend (project "RssFeedTranslator.WinUI3").
 
-![screenshot](docs/screenshot.jpg)
+## WPF
+![screenshot of WinUI3](docs/screenshotWPF.jpg)
+
+
+## WinUI3
+![screenshot of WinUI3](docs/screenshotWinUI3.jpg)
