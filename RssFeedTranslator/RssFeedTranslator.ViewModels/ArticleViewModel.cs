@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RssFeedTranslator.ViewModels
 {
-    class ArticleViewModel
+    public class ArticleViewModel
     {
         private readonly SyndicationItem item;
 

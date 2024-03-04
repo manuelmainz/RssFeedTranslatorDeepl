@@ -72,9 +72,9 @@ namespace RssFeedTranslator.Utils.Json
                 {
                     lock (fileLock)
                     {
-                        using (var fs = new FileStream(fileName, FileMode.CreateNew, FileAccess.ReadWrite))
+                        using (var fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
                         {
-                            JsonSerializer.Serialize(fs, lastData);
+                            JsonSerializer.Serialize(fs, lastData, new JsonSerializerOptions { WriteIndented = true });
                         }
                     }
                 }

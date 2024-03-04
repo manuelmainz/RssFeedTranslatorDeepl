@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RssFeedTranslator.WinUI3 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "RssFeedTranslator.WinUI3 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

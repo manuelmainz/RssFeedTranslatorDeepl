@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using RssFeedTranslator.Utils;
-using RssFeedTranslator.ViewModels;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -13,16 +12,16 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml;
 
-namespace RssFeedTranslator
+namespace RssFeedTranslator.ViewModels
 {
-    class MainWindowViewModel : ObservableObject
+    public class MainWindowViewModel : ObservableObject
     {
         private ArticleViewModel? selectedArticle;
         private string? translatedSummary;
         private readonly ITranslator translator;
 
-        public ICommand DoSomethingCommand { get; }
-        
+        public ICommand LoadArticlesCommand { get; }
+
         public ICommand TranslateArticleCommand { get; }
 
         public ObservableCollection<ArticleViewModel> Articles { get; } = new ObservableCollection<ArticleViewModel>();
@@ -45,14 +44,19 @@ namespace RssFeedTranslator
             set => SetProperty(ref translatedSummary, value);
         }
 
+        public MainWindowViewModel()
+            : this(null)
+        {
+        }
+
         public MainWindowViewModel(ITranslator translator)
         {
             this.translator = translator;
-            DoSomethingCommand = new RelayCommand(DoSomething);
+            LoadArticlesCommand = new RelayCommand(LoadArticles);
             TranslateArticleCommand = new RelayCommand(TranslateArticle);
         }
 
-        public void DoSomething()
+        public void LoadArticles()
         {
             string url = "https://www.ad.nl/binnenland/rss.xml";
             XmlReader reader = XmlReader.Create(url);
